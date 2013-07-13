@@ -1,12 +1,12 @@
-#include "analogclock.h"
+#include "simtemplate.h"
 
 
 int main(int argc, char **argv)
 {
     QGuiApplication app(argc, argv);
 
-    AnalogClockWindow clock;
-    clock.show();
+    SimTemplate sim_window;
+    sim_window.show();
 
     app.exec();
 }

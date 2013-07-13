@@ -1,7 +1,7 @@
-#include "analogclock.h"
+#include "simtemplate.h"
 #include <iostream>
 
-void AnalogClockWindow::timerEvent(QTimerEvent *event)
+void SimTemplate::timerEvent(QTimerEvent *event)
 {
 	if (event->timerId() == m_timerId)
 		qDebug() << "Operate emitted.";
@@ -9,7 +9,7 @@ void AnalogClockWindow::timerEvent(QTimerEvent *event)
 }
 
 
-void AnalogClockWindow::renderDataLater(const QList<double>& data)
+void SimTemplate::renderDataLater(const QList<double>& data)
 {
 	qDebug() << "RenderDataLater called...";
 	if (!m_update_pending) {
@@ -34,7 +34,7 @@ void Sim::doWork(const QString &parameter) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // render
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-void AnalogClockWindow::render(QPainter *p)
+void SimTemplate::render(QPainter *p)
 {
 	qDebug() << "Render called.";
 	/*

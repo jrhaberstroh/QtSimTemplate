@@ -67,7 +67,7 @@ Q_OBJECT
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Main window
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-class AnalogClockWindow : public RasterWindow
+class SimTemplate : public RasterWindow
 {
 Q_OBJECT
 			QThread simThread;	
@@ -76,7 +76,7 @@ Q_OBJECT
 			int m_timerId;
 
 public:
-	AnalogClockWindow():RasterWindow()
+	SimTemplate():RasterWindow()
 	{
     setTitle("Analog Clock");
     resize(200, 200);
@@ -86,14 +86,14 @@ public:
 		Sim *sim = new Sim;
 		sim->moveToThread(&simThread);
 		connect(&simThread, &QThread::finished, sim, &QObject::deleteLater);
-		connect(this, &AnalogClockWindow::operate, sim, &Sim::doWork);
-		connect(sim, &Sim::resultReady, this, &AnalogClockWindow::renderDataLater);
+		connect(this, &SimTemplate::operate, sim, &Sim::doWork);
+		connect(sim, &Sim::resultReady, this, &SimTemplate::renderDataLater);
 		simThread.start();
 
 		m_timerId = startTimer(1000);
 	}
 	
-	~AnalogClockWindow()
+	~SimTemplate()
 	{
 		simThread.quit();
 		simThread.wait();

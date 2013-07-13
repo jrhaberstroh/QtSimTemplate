@@ -1,5 +1,5 @@
 include(../rasterwindow/rasterwindow.pri)
-include(analogclock.pri)
+include(simtemplate.pri)
 
 # work-around for QTBUG-13496
 CONFIG += no_batch
@@ -7,5 +7,5 @@ CONFIG += no_batch
 SOURCES += \
     main.cpp
 
-target.path = $$[QT_INSTALL_EXAMPLES]/gui/analogclock
+target.path = ../simtemplate
 INSTALLS += target
